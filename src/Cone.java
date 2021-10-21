@@ -2,15 +2,6 @@
 public class Cone {
 	private double raio;
 	private double altura;
-	private double geratriz;
-
-	public double getGeratriz() {
-		return geratriz;
-	}
-
-	protected void setGeratriz(double geratriz) {
-		this.geratriz = geratriz;
-	}
 
 	public double getRaio() {
 		return raio;
@@ -28,19 +19,46 @@ public class Cone {
 		this.altura = altura;
 	}
 
+	public double GetGeratriz() {
+		return Math.sqrt((Math.pow(raio, 2) + Math.pow(altura, 2)));
+	}
+
+	public double GetAreaBase() {
+		return Math.PI * (Math.pow(raio, 2));
+	}
+
+	public double GetAreaLateral() {
+		return Math.PI * raio * GetGeratriz();
+	}
+
+	public double GetAreaTotalCone() {
+		return (Math.PI * raio) * (GetGeratriz() + raio);
+	}
+
+	public Cone(double raio, double altura) {
+		this.raio = raio;
+		this.altura = altura;
+	}
+
+	public Cone() {
+		this.raio = 0;
+		this.altura = 0;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[ 햞ea do Fundo= ");
-		builder.append("");
-		builder.append(" 햞ea lateral do Cone= ");
-		builder.append("");
-		builder.append(" 햞ea total= ");
-		builder.append("");
-		builder.append("Raio= ");
-		builder.append("");
-		builder.append("Altura= ");
-		builder.append("");
+		builder.append(this.GetAreaBase());
+		builder.append(", 햞ea lateral do Cone= ");
+		builder.append(this.GetAreaLateral());
+		builder.append(", 햞ea total= ");
+		builder.append(this.GetAreaTotalCone());
+		builder.append(", Raio= ");
+		builder.append(this.getRaio());
+		builder.append(", Altura= ");
+		builder.append(this.getAltura());
+		builder.append(" ]");
 		return builder.toString();
 	}
 }

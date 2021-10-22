@@ -8,7 +8,12 @@ public class Cone {
 	}
 
 	protected void setRaio(double raio) {
-		this.raio = raio;
+		if(raio > 0) {
+			this.raio = raio;
+		} else {
+			throw new UnsupportedOperationException("Valor deve ser maior que 0");
+		}
+		
 	}
 
 	public double getAltura() {
@@ -16,7 +21,12 @@ public class Cone {
 	}
 
 	protected void setAltura(double altura) {
-		this.altura = altura;
+		if(altura > 0) {
+			this.altura = altura;
+		} else {
+			throw new UnsupportedOperationException("Valor deve ser maior que 0");
+		}
+		
 	}
 
 	public double GetGeratriz() {
@@ -36,13 +46,13 @@ public class Cone {
 	}
 
 	public Cone(double raio, double altura) {
-		this.raio = raio;
-		this.altura = altura;
+		setRaio(raio);
+		setAltura(altura);
 	}
 
 	public Cone() {
-		this.raio = 0;
-		this.altura = 0;
+		setRaio(1);
+		setAltura(1);
 	}
 
 	@Override
